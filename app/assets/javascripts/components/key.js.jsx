@@ -27,18 +27,22 @@ var Key = React.createClass({
   },
 
   render: function () {
-    return (<div>
-    </div>);
+    var klass = (this.state.pressed ? "pressed" : "unpressed");
+    return (
+      <div className={klass}>
+      </div>
+    );
   }
 });
 
 var Organ = React.createClass({
   render: function () {
   var notes = ["C","D","E","F","G","A","B"];
-    return <div>
+
+    return <div className="keys">
     {
-      notes.map(function(note){
-        return <Key noteName={note} />;
+      notes.map(function(note, index){
+        return <Key key={index} noteName={note} />;
       })
     }
     </div>;
