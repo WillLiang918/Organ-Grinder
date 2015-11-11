@@ -16,11 +16,13 @@ var Key = React.createClass({
 
   handleChange: function () {
     if (KeyStore.find(this.props.noteName)) {
+      console.log("pressed");
+      console.log(KeyStore.all());
       this.setState({ pressed : true });
       this.note.start();
     } else {
       this.setState({ pressed : false });
-      this.note.end();
+      this.note.stop();
     }
   },
 
@@ -31,14 +33,15 @@ var Key = React.createClass({
 });
 
 var Organ = React.createClass({
-
   render: function () {
-
-    // var keys =
-    return (
-      <div>
-        {}
-      </div>
-    );
+  var notes = ["C","D","E","F","G","A","B"];
+    return <div>
+    {
+      notes.map(function(note){
+        return <Key noteName={note} />;
+      })
+    }
+    </div>;
   }
+
 });

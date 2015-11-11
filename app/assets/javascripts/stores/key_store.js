@@ -18,8 +18,9 @@
   KeyStore.dispatcherId = AppDispatcher.register(function (payload) {
     switch (payload.actionType) {
       case KeyConstants.KEY_PRESSED:
-        _keys.push(payload.noteName);
-        KeyStore.changed();
+        if (_keys.indexOf(payload.noteName) === -1){
+          _keys.push(payload.noteName);
+          KeyStore.changed();}
         break;
       case KeyConstants.KEY_UP:
         var keyIdx = _keys.indexOf(payload.noteName);
